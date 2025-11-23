@@ -253,3 +253,17 @@ input[type="radio"] {
 }
 
 
+/* ===== h1 중앙 정렬 ===== */
+h1 {
+  text-align: center !important;
+}
+
+/* ===== 메인으로 돌아가기 버튼 왼쪽 정렬 ===== */
+.home-link-wrap {
+  text-align: left !important;
+  margin-top: 16px;
+}
+
+.btn-home {
+  display: inline-block;
+}
