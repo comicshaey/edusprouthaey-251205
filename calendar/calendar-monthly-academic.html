@@ -209,6 +209,10 @@
     const COUNT    = Math.max(1, Math.min(36, parseInt(q.get('months')||'12',10)));
     const CUSTOM_TITLE = q.get('title') || '';
 
+    document.getElementById("startYmInput").value = START_YM;
+    document.getElementById("countInput").value = COUNT;
+
+
     let NOTES = {}; // JSON에서 불러와서 채움
 
     const root = document.getElementById('root');
