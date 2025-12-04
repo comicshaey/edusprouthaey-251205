@@ -1,4 +1,4 @@
-// 공통: 숫자 안전 파싱
+// 숫자 안전 파싱
 function toNumber(value) {
   const n = Number(value);
   return isNaN(n) ? 0 : n;
@@ -38,7 +38,7 @@ document.getElementById("btnInner").addEventListener("click", () => {
     return;
   }
 
-  // 왕복 2km 이내 근거리
+  // 왕복 2km 이내 근거리 (실비)
   if (distance > 0 && distance <= 2) {
     typeDesc = "근무지 내 근거리 출장 (왕복 2km 이내, 실비 기준)";
     if (actualShort <= 0) {
@@ -123,7 +123,7 @@ document.getElementById("btnOuter").addEventListener("click", () => {
   mealTotal = Math.max(0, mealTotal - mealReduction);
 
   // 3) 숙박비 상한 계산
-  let capPerNight = 50000; // 기타·세종·제주
+  let capPerNight = 50000; // 기타·세종·제주 기준
   if (region === "seoul") capPerNight = 70000;
   if (region === "metro") capPerNight = 60000;
 
@@ -134,7 +134,7 @@ document.getElementById("btnOuter").addEventListener("click", () => {
   const lodgingCapTotal = capPerNight * nights;
   const lodgingAllowed = Math.min(lodgingSpent, lodgingCapTotal);
 
-  // 4) 항공마일리지 사용 시 일비 추가
+  // 4) 항공마일리지 사용 시 일비 추가 (절약운임 1/2 한도는 별도 검토 전제)
   let perDiemExtra = 0;
   if (mileageUse === "yes") {
     perDiemExtra = Math.round(perDiem * 0.5);
@@ -143,7 +143,6 @@ document.getElementById("btnOuter").addEventListener("click", () => {
   // 5) 총액
   const total = fare + perDiem + perDiemExtra + mealTotal + lodgingAllowed;
 
-  // 비고문구
   const notes = [];
   if (lodgingExtra === "yes") {
     notes.push("· 숙박비 상한 30% 가산을 적용한 금액입니다. 실제 지급 시에는 불가피한 사유 인정 여부를 확인해야 합니다.");
